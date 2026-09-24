@@ -26,7 +26,23 @@ para tenerlo como evidencia de que entiendes el flujo completo.
 3. Anticipación máxima según tipo de estudiante: posgrado 7 días, pregrado 2
    días (`ServicioReservaImpl.anticipacionValida`).
 
-## Pasos para correrlo
+## Opción rápida: GitHub Codespaces (sin instalar nada)
+
+1. En el repo de GitHub: botón **Code** → pestaña **Codespaces** →
+   **Create codespace on main**.
+2. Espera a que cargue (ya trae Java y Maven).
+3. En la terminal integrada, ejecuta:
+   ```
+   mvn jetty:run
+   ```
+4. Cuando aparezca el aviso de puerto reenviado (o en la pestaña **PORTS**),
+   abre el puerto **8080** — el plugin de Jetty embebido levanta la app ahí
+   mismo, sin instalar Tomcat aparte, ya con el contexto
+   `/reserva-cubiculos` configurado.
+5. Prueba con los mismos cubículos/carnés de la sección de abajo.
+6. Para detener el servidor: `Ctrl+C` en la terminal.
+
+## Opción local: VS Code + Tomcat
 
 1. Abre esta carpeta en VS Code (con "Extension Pack for Java" y
    "Community Server Connectors" instalados).
@@ -34,12 +50,19 @@ para tenerlo como evidencia de que entiendes el flujo completo.
 3. En el panel de servidores, agrega ese Tomcat y despliega el `.war`
    que genera Maven (`mvn package`, o el propio botón de la extensión).
 4. Abre `http://localhost:8080/reserva-cubiculos/` en el navegador.
-5. Prueba con el cubículo `C001` (disponible) y con estos carnés de ejemplo:
-   - `PL100524` y `AR101124` → pregrado, hasta 2 días de anticipación.
-   - `GE100124` y `BR100124` → posgrado, hasta 7 días de anticipación.
-6. Para ver el rechazo por solape, reserva el mismo cubículo/fecha/horario
-   dos veces seguidas con carnés distintos. Para ver el rechazo por reserva
-   activa, intenta reservar dos veces con el mismo carné.
+
+También puedes usar el mismo Jetty embebido en local, sin Tomcat:
+`mvn jetty:run` y abrir `http://localhost:8080/reserva-cubiculos/`.
+
+## Datos de prueba
+
+- Cubículos: `C001`, `C002` (Sede Central), `C003` (Sede Norte).
+- Carnés:
+  - `PL100524` y `AR101124` → pregrado, hasta 2 días de anticipación.
+  - `GE100124` y `BR100124` → posgrado, hasta 7 días de anticipación.
+- Para ver el rechazo por solape, reserva el mismo cubículo/fecha/horario
+  dos veces seguidas con carnés distintos. Para ver el rechazo por reserva
+  activa, intenta reservar dos veces con el mismo carné.
 
 ## Para una entrega real con MySQL
 

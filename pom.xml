@@ -35,6 +35,19 @@
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
             </plugin>
+            <!-- Servidor embebido: "mvn jetty:run" levanta la app sin instalar
+                 Tomcat aparte. Pensado para correr en GitHub Codespaces con un
+                 solo comando; también funciona en tu máquina. -->
+            <plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>11.0.20</version>
+                <configuration>
+                    <webApp>
+                        <contextPath>/reserva-cubiculos</contextPath>
+                    </webApp>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
