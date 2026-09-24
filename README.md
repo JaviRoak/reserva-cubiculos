@@ -26,7 +26,7 @@ para tenerlo como evidencia de que entiendes el flujo completo.
 3. Anticipación máxima según tipo de estudiante: posgrado 7 días, pregrado 2
    días (ServicioReservaImpl.anticipacionValida).
 
-## Opción rápida: GitHub Codespaces (sin instalar nada)
+## Opción rápida: GitHub Codespaces 
 
 1. En el repo de GitHub: botón *Code* → pestaña *Codespaces* →
    *Create codespace on main*.
@@ -67,11 +67,3 @@ http://localhost:8080/reserva-cubiculos/.
   dos veces seguidas con carnés distintos. Para ver el rechazo por reserva
   activa, intenta reservar dos veces con el mismo carné.
 
-## Para una entrega real con MySQL
-
-RepositorioCubiculoJDBC y RepositorioReservaJDBC aquí son una versión
-*EN MEMORIA* solo para que el flujo se pueda probar sin MySQL instalado
-(mismo criterio que usaba el pre-parcial). Reemplaza su contenido por JDBC
-real cuando tengas la base de datos configurada — la firma de los métodos
-no cambia, así que el resto del código (Servlet, Servicio) sigue funcionando
-igual.
