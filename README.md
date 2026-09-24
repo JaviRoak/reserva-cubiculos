@@ -34,9 +34,9 @@ para tenerlo como evidencia de que entiendes el flujo completo.
 3. En la terminal integrada, ejecuta (el nombre completo del plugin, no el
    atajo jetty:run — Maven no reconoce ese atajo salvo que lo agregues a
    tu configuración global, así que usa esto siempre):
-   
+   ```bash
    mvn org.eclipse.jetty:jetty-maven-plugin:11.0.20:run
-   
+   ```
 4. Cuando aparezca el aviso de puerto reenviado (o en la pestaña *PORTS*),
    abre el puerto *8080* — el plugin de Jetty embebido levanta la app ahí
    mismo, sin instalar Tomcat aparte, ya con el contexto
