@@ -1,0 +1,51 @@
+# reserva-cubiculos
+
+Proyecto Maven (packaging `war`) que implementa el diseño del Segundo Parcial
+de Desarrollo de Aplicaciones Multiplataforma (UFG) — sistema de reservas de
+cubículos de estudio — listo para abrir en VS Code, con la misma estructura
+que el proyecto del pre-parcial (`biblioteca-prestamos`).
+
+Esto no lo pide el examen (el examen solo pide el diseño en el documento),
+pero te sirve para probar en la práctica lo que explicaste en el video y
+para tenerlo como evidencia de que entiendes el flujo completo.
+
+## Estructura
+
+- `src/main/java/com/reservas/modelo` → `Cubiculo`, `Estudiante`, `Reserva`
+- `src/main/java/com/reservas/servicio` → `IServicioReserva`, `ServicioReservaImpl`,
+  y los repositorios (con una implementación **en memoria** para probar sin BD real)
+- `src/main/java/com/reservas/web` → `ReservaServlet`
+- `src/main/webapp` → `formulario_reserva.html` y `WEB-INF/web.xml`
+
+## Reglas de negocio implementadas
+
+1. Una reserva no se registra si se solapa en fecha/horario con otra reserva
+   confirmada del mismo cubículo (`ServicioReservaImpl.haySolape`).
+2. Un estudiante no puede tener más de una reserva activa a la vez
+   (`ServicioReservaImpl.tieneReservaActiva`).
+3. Anticipación máxima según tipo de estudiante: posgrado 7 días, pregrado 2
+   días (`ServicioReservaImpl.anticipacionValida`).
+
+## Pasos para correrlo
+
+1. Abre esta carpeta en VS Code (con "Extension Pack for Java" y
+   "Community Server Connectors" instalados).
+2. Descarga Apache Tomcat 10.x y descomprímelo en tu equipo.
+3. En el panel de servidores, agrega ese Tomcat y despliega el `.war`
+   que genera Maven (`mvn package`, o el propio botón de la extensión).
+4. Abre `http://localhost:8080/reserva-cubiculos/` en el navegador.
+5. Prueba con el cubículo `C001` (disponible) y con estos carnés de ejemplo:
+   - `PL100524` y `AR101124` → pregrado, hasta 2 días de anticipación.
+   - `GE100124` y `BR100124` → posgrado, hasta 7 días de anticipación.
+6. Para ver el rechazo por solape, reserva el mismo cubículo/fecha/horario
+   dos veces seguidas con carnés distintos. Para ver el rechazo por reserva
+   activa, intenta reservar dos veces con el mismo carné.
+
+## Para una entrega real con MySQL
+
+`RepositorioCubiculoJDBC` y `RepositorioReservaJDBC` aquí son una versión
+**EN MEMORIA** solo para que el flujo se pueda probar sin MySQL instalado
+(mismo criterio que usaba el pre-parcial). Reemplaza su contenido por JDBC
+real cuando tengas la base de datos configurada — la firma de los métodos
+no cambia, así que el resto del código (Servlet, Servicio) sigue funcionando
+igual.

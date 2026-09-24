@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Reserva de cubículos de estudio</title>
+</head>
+<body>
+    <h1>Reservar cubículo de estudio</h1>
+    <form action="reservas" method="post">
+        <label>Código de cubículo:</label>
+        <input type="text" name="codigoCubiculo" placeholder="C001" required>
+        <br><br>
+        <label>Fecha:</label>
+        <input type="date" name="fecha" required>
+        <br><br>
+        <label>Hora inicio:</label>
+        <input type="time" name="horaInicio" required>
+        <br><br>
+        <label>Hora fin:</label>
+        <input type="time" name="horaFin" required>
+        <br><br>
+        <label>Carné del estudiante:</label>
+        <input type="text" name="carne" placeholder="PL100524" required>
+        <br><br>
+        <button type="submit">Reservar</button>
+    </form>
+
+    <hr>
+    <p>Cubículos de prueba: <b>C001</b>, <b>C002</b> (Sede Central), <b>C003</b> (Sede Norte).</p>
+    <p>Carnés de prueba: <b>PL100524</b> y <b>AR101124</b> (pregrado, hasta 2 días de anticipación),
+       <b>GE100124</b> y <b>BR100124</b> (posgrado, hasta 7 días).</p>
+</body>
+</html>
