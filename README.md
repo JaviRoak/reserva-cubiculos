@@ -26,7 +26,7 @@ para tenerlo como evidencia de que entiendes el flujo completo.
 3. Anticipación máxima según tipo de estudiante: posgrado 7 días, pregrado 2
    días (`ServicioReservaImpl.anticipacionValida`).
 
-## Opción rápida: GitHub Codespaces (sin instalar nada)
+## Opción rápida: GitHub Codespaces
 
 1. En el repo de GitHub: botón **Code** → pestaña **Codespaces** →
    **Create codespace on main**.
